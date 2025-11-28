@@ -4,3 +4,7 @@
 
 /NotesManagement/.vs/NotesManagement/CopilotIndices/17.14.794.21998
 /NotesManagement/.vs/NotesManagement/FileContentIndex
+/NotesManagement/.vs/
+/NotesManagement/Application/obj/
+/NotesManagement/Domain/obj/
+/NotesManagement//Infrastructure/obj/

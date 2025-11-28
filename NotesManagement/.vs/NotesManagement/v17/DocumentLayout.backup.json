@@ -1,7 +1,32 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Code\\learnings\\NotesManagement\\",
-  "Documents": [],
+  "WorkspaceRootPath": "C:\\Code\\learnings\\CSCAssignment\\NotesManagement\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{244A2FA5-9C64-4ABA-9EB7-02B50CC4D4B4}|NotesApp\\NotesApp.csproj|c:\\code\\learnings\\cscassignment\\notesmanagement\\notesapp\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{244A2FA5-9C64-4ABA-9EB7-02B50CC4D4B4}|NotesApp\\NotesApp.csproj|solutionrelative:notesapp\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C98C6A48-DEAA-4AC1-9A33-10AD138A6DB5}|Infrastructure\\Infrastructure.csproj|c:\\code\\learnings\\cscassignment\\notesmanagement\\infrastructure\\addinfradependencies.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C98C6A48-DEAA-4AC1-9A33-10AD138A6DB5}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\addinfradependencies.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{244A2FA5-9C64-4ABA-9EB7-02B50CC4D4B4}|NotesApp\\NotesApp.csproj|c:\\code\\learnings\\cscassignment\\notesmanagement\\notesapp\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{244A2FA5-9C64-4ABA-9EB7-02B50CC4D4B4}|NotesApp\\NotesApp.csproj|solutionrelative:notesapp\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C98C6A48-DEAA-4AC1-9A33-10AD138A6DB5}|Infrastructure\\Infrastructure.csproj|c:\\code\\learnings\\cscassignment\\notesmanagement\\infrastructure\\notesdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C98C6A48-DEAA-4AC1-9A33-10AD138A6DB5}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\notesdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C98C6A48-DEAA-4AC1-9A33-10AD138A6DB5}|Infrastructure\\Infrastructure.csproj|c:\\code\\learnings\\cscassignment\\notesmanagement\\infrastructure\\entities\\note.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C98C6A48-DEAA-4AC1-9A33-10AD138A6DB5}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\entities\\note.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{46D51120-C5BF-4FBD-838E-EFB696189BD3}|Domain\\Domain.csproj|c:\\code\\learnings\\cscassignment\\notesmanagement\\domain\\note.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{46D51120-C5BF-4FBD-838E-EFB696189BD3}|Domain\\Domain.csproj|solutionrelative:domain\\note.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,7 +34,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
@@ -22,6 +47,84 @@
             {
               "$type": "Bookmark",
               "Name": "ST:130:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Code\\learnings\\CSCAssignment\\NotesManagement\\NotesApp\\Program.cs",
+              "RelativeDocumentMoniker": "NotesApp\\Program.cs",
+              "ToolTip": "C:\\Code\\learnings\\CSCAssignment\\NotesManagement\\NotesApp\\Program.cs",
+              "RelativeToolTip": "NotesApp\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-28T02:50:51.022Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Note.cs",
+              "DocumentMoniker": "C:\\Code\\learnings\\CSCAssignment\\NotesManagement\\Infrastructure\\Entities\\Note.cs",
+              "RelativeDocumentMoniker": "Infrastructure\\Entities\\Note.cs",
+              "ToolTip": "C:\\Code\\learnings\\CSCAssignment\\NotesManagement\\Infrastructure\\Entities\\Note.cs",
+              "RelativeToolTip": "Infrastructure\\Entities\\Note.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAwwAkAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-28T02:45:01.552Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AddInfraDependencies.cs",
+              "DocumentMoniker": "C:\\Code\\learnings\\CSCAssignment\\NotesManagement\\Infrastructure\\AddInfraDependencies.cs",
+              "RelativeDocumentMoniker": "Infrastructure\\AddInfraDependencies.cs",
+              "ToolTip": "C:\\Code\\learnings\\CSCAssignment\\NotesManagement\\Infrastructure\\AddInfraDependencies.cs",
+              "RelativeToolTip": "Infrastructure\\AddInfraDependencies.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-28T00:52:44.058Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "appsettings.Development.json",
+              "DocumentMoniker": "C:\\Code\\learnings\\CSCAssignment\\NotesManagement\\NotesApp\\appsettings.Development.json",
+              "RelativeDocumentMoniker": "NotesApp\\appsettings.Development.json",
+              "ToolTip": "C:\\Code\\learnings\\CSCAssignment\\NotesManagement\\NotesApp\\appsettings.Development.json*",
+              "RelativeToolTip": "NotesApp\\appsettings.Development.json*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-11-28T00:51:53.708Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "NotesDBContext.cs",
+              "DocumentMoniker": "C:\\Code\\learnings\\CSCAssignment\\NotesManagement\\Infrastructure\\NotesDBContext.cs",
+              "RelativeDocumentMoniker": "Infrastructure\\NotesDBContext.cs",
+              "ToolTip": "C:\\Code\\learnings\\CSCAssignment\\NotesManagement\\Infrastructure\\NotesDBContext.cs",
+              "RelativeToolTip": "Infrastructure\\NotesDBContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-28T00:48:56.813Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Note.cs",
+              "DocumentMoniker": "C:\\Code\\learnings\\CSCAssignment\\NotesManagement\\Domain\\Note.cs",
+              "RelativeDocumentMoniker": "Domain\\Note.cs",
+              "ToolTip": "C:\\Code\\learnings\\CSCAssignment\\NotesManagement\\Domain\\Note.cs",
+              "RelativeToolTip": "Domain\\Note.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAADwvwkAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-28T00:40:39.637Z",
+              "EditorCaption": ""
             }
           ]
         }
