@@ -3,16 +3,16 @@
   "WorkspaceRootPath": "C:\\Code\\learnings\\CSCAssignment\\NotesManagement\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{244A2FA5-9C64-4ABA-9EB7-02B50CC4D4B4}|NotesApp\\NotesApp.csproj|c:\\code\\learnings\\cscassignment\\notesmanagement\\notesapp\\controllers\\notescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{244A2FA5-9C64-4ABA-9EB7-02B50CC4D4B4}|NotesApp\\NotesApp.csproj|solutionrelative:notesapp\\controllers\\notescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{244A2FA5-9C64-4ABA-9EB7-02B50CC4D4B4}|NotesApp\\NotesApp.csproj|c:\\code\\learnings\\cscassignment\\notesmanagement\\notesapp\\views\\notes\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{244A2FA5-9C64-4ABA-9EB7-02B50CC4D4B4}|NotesApp\\NotesApp.csproj|solutionrelative:notesapp\\views\\notes\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C98C6A48-DEAA-4AC1-9A33-10AD138A6DB5}|Infrastructure\\Infrastructure.csproj|c:\\code\\learnings\\cscassignment\\notesmanagement\\infrastructure\\repo\\notesrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C98C6A48-DEAA-4AC1-9A33-10AD138A6DB5}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\repo\\notesrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{244A2FA5-9C64-4ABA-9EB7-02B50CC4D4B4}|NotesApp\\NotesApp.csproj|c:\\code\\learnings\\cscassignment\\notesmanagement\\notesapp\\controllers\\notescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{244A2FA5-9C64-4ABA-9EB7-02B50CC4D4B4}|NotesApp\\NotesApp.csproj|solutionrelative:notesapp\\controllers\\notescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{2B1EBA02-35D8-408D-A384-34FD30AAAB76}|Application\\Application.csproj|c:\\code\\learnings\\cscassignment\\notesmanagement\\application\\inotesrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -90,7 +90,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 8,
+          "SelectedChildIndex": 9,
           "Children": [
             {
               "$type": "Bookmark",
@@ -158,7 +158,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "NotesRepository.cs",
               "DocumentMoniker": "C:\\Code\\learnings\\CSCAssignment\\NotesManagement\\Infrastructure\\Repo\\NotesRepository.cs",
               "RelativeDocumentMoniker": "Infrastructure\\Repo\\NotesRepository.cs",
@@ -171,7 +171,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Code\\learnings\\CSCAssignment\\NotesManagement\\NotesApp\\Views\\Notes\\Index.cshtml",
               "RelativeDocumentMoniker": "NotesApp\\Views\\Notes\\Index.cshtml",
@@ -184,13 +184,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "NotesController.cs",
               "DocumentMoniker": "C:\\Code\\learnings\\CSCAssignment\\NotesManagement\\NotesApp\\Controllers\\NotesController.cs",
               "RelativeDocumentMoniker": "NotesApp\\Controllers\\NotesController.cs",
               "ToolTip": "C:\\Code\\learnings\\CSCAssignment\\NotesManagement\\NotesApp\\Controllers\\NotesController.cs",
               "RelativeToolTip": "NotesApp\\Controllers\\NotesController.cs",
-              "ViewState": "AgIAABkAAAAAAAAAAAAcwC4AAAAMAAAAAAAAAA==",
+              "ViewState": "AgIAABkAAAAAAAAAAAAcwCAAAAA6AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-11-28T07:03:46.198Z",
               "EditorCaption": ""
