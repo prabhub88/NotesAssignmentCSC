@@ -211,8 +211,10 @@
     for (var i = 0; i < notes.notes.length; i++) {
             var note = notes.notes[i];
                     if(note.title != undefined && note.title != ''){
+                                                var newcolors = note.priority == "High" ? "table-danger" : note.priority == "Medium" ? "table-warning" : "table-success";
+
                     tbody.append(`
-                        <tr data-id="${note.id}">
+                        <tr class="${newcolors}" data-id="${note.id}">
                             <td data-field="Title">${note.title}</td>
                             <td data-field="Content">${note.content}</td>
                             <td data-field="Priority">${note.priority}</td>
