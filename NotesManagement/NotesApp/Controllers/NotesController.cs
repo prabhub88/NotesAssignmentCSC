@@ -1,87 +1,52 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Application;
+using AutoMapper;
+using Domain.DTO;
 
 namespace NotesApp.Controllers
 {
     public class NotesController : Controller
     {
         private readonly INotesRepository _notesRepository;
-        public NotesController(INotesRepository notesRepository) { 
-            _notesRepository = notesRepository; }
+        private readonly IMapper _mapper;
+        public NotesController(INotesRepository notesRepository, IMapper mapper) { 
+            _notesRepository = notesRepository; _mapper = mapper; }
         // GET: Notes
         public async Task<ActionResult> Index()
         {
+            
             return View(await _notesRepository.GetAllNoteAsync());
         }
 
-        // GET: Notes/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
-        // GET: Notes/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: Notes/Create
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public async Task<ActionResult> Create([FromBody] NoteDto noteDto)
         {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            noteDto.CreatedDate = Convert.ToDateTime(DateTime.Now.ToString("g"));
+            await _notesRepository.AddNoteAsync(noteDto);
+            return Json(new { success = true, noteDto });
+        }
+        
+        [HttpPut]
+        public async Task<ActionResult> Update([FromBody] NoteDto noteDto)
+        {
+            await _notesRepository.EditNoteAsync(noteDto);
+            return Json(new { success = true });
         }
 
-        // GET: Notes/Edit/5
-        public ActionResult Edit(int id)
+        [HttpDelete]
+        public async Task<ActionResult> Delete([FromBody]NoteDto noteDto)
         {
-            return View();
+            var results = await _notesRepository.DeleteNoteAsync(noteDto.Id.ToString());
+            return Json(new { success = true });
         }
 
-        // POST: Notes/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        [HttpGet]
+        public async Task<ActionResult> SearchByTitle(string title)
         {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            var notes = await _notesRepository.GetNoteByTitleAsync(title);
+            return Json(new { notes });
         }
 
-        // GET: Notes/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: Notes/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
     }
 }

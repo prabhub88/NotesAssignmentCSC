@@ -9,6 +9,7 @@ namespace Infrastructure.AutoMapper
         public NotesDtoToEntityProfile()
         { 
              CreateMap<NoteDto, Note>();
+            CreateMap<NoteDto, Note>().ReverseMap();
         }
     }
 }
