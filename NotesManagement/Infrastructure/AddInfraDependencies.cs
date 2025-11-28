@@ -1,4 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Application;
+using Infrastructure.AutoMapper;
+using Infrastructure.Repo;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -8,10 +11,12 @@ namespace Infrastructure
     {
         public static IServiceCollection AddInfrastructureDependencies(this IServiceCollection services, IConfiguration configuration)
         {
-            // Add DbContext
             services.AddDbContext<NotesDBContext>(options =>
                 options.UseSqlServer(configuration.GetConnectionString("NotesConnectionString")));
-            // Add other infrastructure services if needed
+
+            services.AddScoped<INotesRepository,NotesRepository>();
+
+            services.AddAutoMapper(typeof(NotesDtoToEntityProfile).Assembly);
             return services;
         }
     }

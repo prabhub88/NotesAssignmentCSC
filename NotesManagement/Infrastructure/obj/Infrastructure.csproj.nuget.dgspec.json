@@ -31,7 +31,11 @@
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
-            "projectReferences": {}
+            "projectReferences": {
+              "C:\\Code\\learnings\\CSCAssignment\\NotesManagement\\Domain\\Domain.csproj": {
+                "projectPath": "C:\\Code\\learnings\\CSCAssignment\\NotesManagement\\Domain\\Domain.csproj"
+              }
+            }
           }
         },
         "warningProperties": {

@@ -1,0 +1,35 @@
+﻿@model IEnumerable<Domain.DTO.NoteDto>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<a class="btn btn-primary" href="/Notes/Create">Create New Note</a>
+<table class="table table-striped mt-3">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Content</th>
+            <th>Priority</th>
+            <th>Created Date</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var note in Model)
+        {
+            var color = note.Priority == "High" ? "table-danger" : note.Priority == "Medium" ? "table-warning" : "table-success";
+            <tr class="@color">
+                <td>@note.Title</td>
+                <td>@note.Content</td>
+                <td>@note.Priority</td>
+                <td>@note.CreatedDate.ToString("g")</td>
+                <td>
+                    <a class="btn btn-sm btn-info" href="/Notes/Edit/@note.Id">Edit</a>
+                    <a class="btn btn-sm btn-danger" href="/Notes/Delete/@note.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
