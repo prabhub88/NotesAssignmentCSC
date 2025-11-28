@@ -70,14 +70,14 @@ namespace Infrastructure.Repo
 
         async Task<List<NoteDto>> INotesRepository.GetAllNoteAsync()
         {
-            var notes = await _dbContext.Note.ToListAsync();
+            var notes = await _dbContext.Note.OrderByDescending(o=>o.CreatedDate).ToListAsync();
             var mapnotes= _mapper.Map<List<NoteDto>>(notes);
             return mapnotes;
         }
 
       async Task<List<NoteDto>> INotesRepository.GetNoteByTitleAsync(string title)
         {
-            var reslts = await _dbContext.Note.Where(n =>n.Title.Contains(title)).ToListAsync();
+            var reslts = await _dbContext.Note.Where(n =>n.Title.Contains(title)).OrderByDescending(o=>o.CreatedDate).ToListAsync();
             return _mapper.Map<List<NoteDto>>(reslts);
         }
 
