@@ -1,9 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-
-namespace Domain
+﻿namespace Domain.DTO
 {
-    public class Note
+    public class NoteDto
     {
         public int Id { get; set; }
 
