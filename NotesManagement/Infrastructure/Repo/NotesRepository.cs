@@ -3,6 +3,7 @@ using AutoMapper;
 using Domain.DTO;
 using Infrastructure.Entities;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 
 
 namespace Infrastructure.Repo
@@ -19,18 +20,17 @@ namespace Infrastructure.Repo
         {
             var entityModel = _mapper.Map<Note>(noteDto);
             await _dbContext.Note.AddAsync(entityModel);
-            commitTransaction();
+          await  commitTransaction();
             return 1;
         }
 
-       async Task<int> INotesRepository.DeleteNoteAsync(NoteDto noteDto)
+       async Task<int> INotesRepository.DeleteNoteAsync(string  id)
         {
-            var entityModel = _mapper.Map<Note>(noteDto);
-            var actualRow=await _dbContext.Note.Where(x=>x.Id==entityModel.Id).FirstOrDefaultAsync();
+            var actualRow=await _dbContext.Note.Where(x=>x.Id== Convert.ToInt32(id)).FirstOrDefaultAsync();
             if (actualRow != null)
             {
-                _dbContext.Note.Remove(entityModel);
-                commitTransaction();
+                _dbContext.Note.Remove(actualRow);
+               await commitTransaction();
                 return 1;
             }
             else
@@ -39,31 +39,58 @@ namespace Infrastructure.Repo
 
        async Task<int> INotesRepository.EditNoteAsync(NoteDto noteDto)
         {
-            var entityModel = _mapper.Map<Note>(noteDto);
-            var actualRow = await _dbContext.Note.Where(x => x.Id == entityModel.Id).FirstOrDefaultAsync();
-            if (actualRow != null && actualRow.Id == entityModel.Id)
+            try
             {
-                _dbContext.Note.Update(entityModel);
-                commitTransaction();
-                return 1;
+                if (noteDto != null && noteDto.Id > 0)
+                {
+                    var actualRow = await _dbContext.Note.Where(x => x.Id == noteDto.Id).FirstOrDefaultAsync();
+                    if (actualRow != null && actualRow.Id == noteDto.Id)
+                    {
+
+                        await _dbContext.Note
+                               .Where(n => n.Id == noteDto.Id)
+                               .ExecuteUpdateAsync(setters => setters
+                                   .SetProperty(n => n.Title, noteDto.Title)
+                                   .SetProperty(n => n.Content, noteDto.Content)
+                                   .SetProperty(n => n.Priority, noteDto.Priority)
+                               );
+                        return 1;
+                    }
+                    else
+                        return 0;
+                }
+                else
+                    return 0;
             }
-            else
-                return 0;
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
-       async Task<List<NoteDto>> INotesRepository.GetAllNoteAsync()
+        async Task<List<NoteDto>> INotesRepository.GetAllNoteAsync()
         {
-          return _mapper.Map<List<NoteDto>>(await _dbContext.Note.ToListAsync());
+            var notes = await _dbContext.Note.ToListAsync();
+            var mapnotes= _mapper.Map<List<NoteDto>>(notes);
+            return mapnotes;
         }
 
-      async Task<NoteDto> INotesRepository.GetNoteByTitleAsync(string title)
+      async Task<List<NoteDto>> INotesRepository.GetNoteByTitleAsync(string title)
         {
-            return _mapper.Map<NoteDto>(await _dbContext.Note.Where(n=>EF.Functions.Like(n.Title,title)).FirstOrDefaultAsync());
+            var reslts = await _dbContext.Note.Where(n =>n.Title.Contains(title)).ToListAsync();
+            return _mapper.Map<List<NoteDto>>(reslts);
         }
 
-        void commitTransaction()
+        async Task commitTransaction()
         {
-            _dbContext.SaveChanges();
+            try
+            {
+                await _dbContext.SaveChangesAsync();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 }

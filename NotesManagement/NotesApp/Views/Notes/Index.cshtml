@@ -1,35 +1,234 @@
-﻿@model IEnumerable<Domain.DTO.NoteDto>
-@{
-    ViewData["Title"] = "Index";
-}
+﻿@model IEnumerable<Domain.DTO.NoteDto>  
+@{  
+    ViewData["Title"] = "Index";  
+}  
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">  
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>  
+  
+<div class="container mt-4">
+    <div class="row mb-3">
+        <div class="col-md-3">
+            <input type="text" id="newTitle" class="form-control" placeholder="Title" />
+        </div>
+        <div class="col-md-4">
+            <input type="text" id="newContent" class="form-control" placeholder="Content" />
+        </div>
 
-<h1>Index</h1>
+        <div class="col-md-3">
+            <select id="newPriority" class="form-select priority-select">
+                <option value="Low">Low</option>
+                <option value="Medium">Medium</option>
+                <option value="High">High</option>
+            </select>
+        </div>
 
-<a class="btn btn-primary" href="/Notes/Create">Create New Note</a>
-<table class="table table-striped mt-3">
-    <thead>
-        <tr>
-            <th>Title</th>
-            <th>Content</th>
-            <th>Priority</th>
-            <th>Created Date</th>
-            <th>Actions</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var note in Model)
-        {
-            var color = note.Priority == "High" ? "table-danger" : note.Priority == "Medium" ? "table-warning" : "table-success";
-            <tr class="@color">
-                <td>@note.Title</td>
-                <td>@note.Content</td>
-                <td>@note.Priority</td>
-                <td>@note.CreatedDate.ToString("g")</td>
-                <td>
-                    <a class="btn btn-sm btn-info" href="/Notes/Edit/@note.Id">Edit</a>
-                    <a class="btn btn-sm btn-danger" href="/Notes/Delete/@note.Id">Delete</a>
-                </td>
-            </tr>
+        <div class="col-md-2">
+            <button id="btnAdd" class="btn btn-success">Save</button>
+        </div>
+    </div>
+</div>
+
+<div class="container mt-4">  
+    <h2>List of Previous Notes</h2>
+
+    <div class="row mb-3">
+        <div class="col-md-6">
+            <input type="text" id="searchTitle" class="form-control" placeholder="Search by Title" />
+        </div>
+        <div class="col-md-6">
+            <button id="btnSearch" class="btn btn-primary">Search</button>
+        </div>
+    </div>
+
+    <table class="table table-bordered">  
+        <thead>  
+            <tr>  
+                <th>Title</th>  
+                <th>Content</th>  
+                <th>Priority</th>
+                <th>CreatedOn</th>
+                <th>Action</th>  
+            </tr>  
+        </thead>  
+        <tbody>  
+            @foreach (var note in Model)  
+            {
+                var color = note.Priority == "High" ? "table-danger" : note.Priority == "Medium" ? "table-warning" : "table-success";
+                <tr class="@color" data-id="@note.Id">
+                    <td data-field="Title">@note.Title</td>  
+                    <td data-field="Content">@note.Content</td>
+                    <td data-field="Priority">@note.Priority</td>
+                    <td>@note.CreatedDate.ToString("g")</td>
+                     <td>
+
+                        <a class="btn btn-warning btn-edit">Edit</a>
+                        <a class="btn btn-sm btn-save d-none">Save</a>
+                        <a class="btn btn-sm btn-danger btn-delete">Delete</a>
+                    </td>
+                </tr>  
+            }  
+        </tbody>  
+    </table>  
+</div>
+
+<script>
+        $("#btnAdd").click(function () {
+            var title = $("#newTitle").val();
+            var content = $("#newContent").val();
+            var priority=$("#newPriority").val();
+            if(title == '' || content == ''){
+                alert("Title and Content cannot be empty.");
+                return;
+            }
+            $.ajax({
+                url: '/Notes/Create',
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify({ Title: title, Content: content, Priority:priority }),
+                success: function (res) {
+                    if (res.success) {
+                         $("#newTitle").val('');
+                        $("#newContent").val('');
+                        $("#newPriority").val('Low');
+                        var newcolor = res.noteDto.priority == "High" ? "table-danger" : res.noteDto.priority == "Medium" ? "table-warning" : "table-success";
+
+    $("tbody").append(`
+                        <tr class="${newcolor}" data-id="${res.noteDto.id}">
+                            <td data-field="Title">${res.noteDto.title}</td>
+                            <td data-field="Content">${res.noteDto.content}</td>
+                            <td data-field="Priority">${res.noteDto.priority}</td>
+                            <td data-field="Content">${res.noteDto.createdDate}</td>
+                            <td>
+                                <a class="btn btn-warning btn-edit">Edit</a>
+                                <button class="btn btn-success btn-save d-none">Save</button>
+                                <a class="btn btn-sm btn-danger btn-delete">Delete</a>
+                            </td>
+                        </tr>
+                    `);
+
+
+                        alert("Note added successfully!");
+                    }
+                }
+            });
+        });
+
+        $(document).on("click", ".btn-edit", function () {
+        var row = $(this).closest("tr");
+        var id = row.data("id");
+        var title = row.find("[data-field='Title']").text();
+        var content = row.find("[data-field='Content']").text();
+        var priority = row.find("[data-field='Priority']").text();
+
+
+        row.find("[data-field='Title']").html('<input type="text" class="form-control edit-title" value="' + title + '" />');
+        row.find("[data-field='Content']").html('<input type="text" class="form-control edit-content" value="' + content + '" />');
+
+
+    row.find("[data-field='Priority']").html(`
+           <select class="form-select edit-priority">
+               <option value="Low" ${priority === "Low" ? "selected" : ""}>Low</option>
+               <option value="Medium" ${priority === "Medium" ? "selected" : ""}>Medium</option>
+               <option value="High" ${priority === "High" ? "selected" : ""}>High</option>
+           </select>
+       `);
+
+
+        // Hide Edit button and show Save button
+        row.find(".btn-edit").addClass("d-none");
+        row.find(".btn-save").removeClass("d-none");
+
+    });
+
+
+    $(document).on("click", ".btn-save", function () {
+        var row = $(this).closest("tr");
+        var id = row.data("id");
+        var newTitle = row.find(".edit-title").val();
+        var newContent = row.find(".edit-content").val();
+        var newPriority = row.find(".edit-priority").val();
+
+           $.ajax({
+            url: '/Notes/Update',
+            type: 'PUT',
+            contentType: 'application/json',
+            data: JSON.stringify({ Id: id, Title: newTitle, Content: newContent, Priority:newPriority }),
+            success: function (res) {
+                if (res.success) {
+                    row.find("[data-field='Title']").text(newTitle);
+                    row.find("[data-field='Content']").text(newContent);
+                    row.find("[data-field='Priority']").text(newPriority);
+                    row.find(".btn-edit").removeClass("d-none");
+                    row.find(".btn-save").addClass("d-none");
+                    alert("Updated successfully!");
+
+                }
+            }
+        });
+
+
+
+    });
+    
+     $(document).on("click", ".btn-delete", function () {
+        var row = $(this).closest("tr");
+        var id = row.data("id");
+        if (confirm("Are you sure you want to delete this note?")) {
+        $.ajax({
+            url: '/Notes/Delete',
+            type: 'DELETE',
+            contentType: 'application/json',
+            data:JSON.stringify({ Id: id}),
+            success: function (res) {
+                if (res.success) {
+                    alert("Deleted successfully!");
+                    row.remove();
+                }
+            }
+        });
         }
-    </tbody>
-</table>
+    });
+
+
+    $(document).on("click", "#btnSearch", function () {
+         var searchText = $("#searchTitle").val();
+            if(searchText == ''){
+                alert("Please enter title to search");
+                return;
+            }
+
+
+
+    $.ajax({
+            url: '/Notes/SearchByTitle',
+            type: 'GET',
+            data: { title: searchText },
+            success: function (notes) {
+                var tbody = $("tbody");
+                tbody.empty(); // Clear existing rows
+
+
+    for (var i = 0; i < notes.notes.length; i++) {
+            var note = notes.notes[i];
+                    if(note.title != undefined && note.title != ''){
+                    tbody.append(`
+                        <tr data-id="${note.id}">
+                            <td data-field="Title">${note.title}</td>
+                            <td data-field="Content">${note.content}</td>
+                            <td data-field="Priority">${note.priority}</td>
+                            <td data-field="Content">${note.createdDate}</td>
+                            <td>
+                                <button class="btn btn-warning btn-edit">Edit</button>
+                                <button class="btn btn-success btn-save d-none">Save</button>
+                                <button class="btn btn-danger btn-delete">Delete</button>
+                            </td>
+                        </tr>
+                    `);
+                    }
+                    }
+            }
+        });
+    });
+
+
+</script>
